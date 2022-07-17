@@ -25,6 +25,11 @@ third_word_result = [0, 2, 2, 2, 0]
 fourth_word = 'clans'
 fourth_word_result = [0, 2, 2, 2, 0]
 
+first_word = first_word.upper()
+second_word = second_word.upper()
+third_word = third_word.upper()
+fourth_word = fourth_word.upper()
+
 first_slot_possible_letters = []
 first_slot_definitive_letter = ''
 second_slot_possible_letters = []
@@ -41,7 +46,8 @@ def remove_incorrect_letters():
     for i in range(len(first_word_result)):
         print(first_word_result[i], first_word[i])
         if first_word_result[i] == 0:
-            abecedary.pop(i)
+            if first_word[i] in abecedary:
+                abecedary.remove(first_word[i])
         if first_word_result[i] == 1:
             add_possible_letter_to_all_but_one_slot(first_word[i], first_word_result[i])
         if first_word_result[i] == 2:
@@ -50,7 +56,8 @@ def remove_incorrect_letters():
     for i in range(len(second_word_result)):
         print(second_word_result[i], second_word[i])
         if second_word_result[i] == 0:
-            abecedary.pop(i)
+            if second_word[i] in abecedary:
+                abecedary.remove(second_word[i])
         if second_word_result[i] == 1:
             add_possible_letter_to_all_but_one_slot(second_word[i], second_word_result[i])
         if second_word_result[i] == 2:
@@ -59,7 +66,8 @@ def remove_incorrect_letters():
     for i in range(len(third_word_result)):
         print(third_word_result[i], third_word[i])
         if third_word_result[i] == 0:
-            abecedary.pop(i)
+            if third_word[i] in abecedary:
+                abecedary.remove(third_word[i])
         if third_word_result[i] == 1:
             add_possible_letter_to_all_but_one_slot(third_word[i], third_word_result[i])
         if third_word_result[i] == 2:
@@ -68,7 +76,8 @@ def remove_incorrect_letters():
     for i in range(len(fourth_word_result)):
         print(fourth_word_result[i], fourth_word[i])
         if fourth_word_result[i] == 0:
-            abecedary.pop(i)
+            if fourth_word[i] in abecedary:
+                abecedary.remove(fourth_word[i])
         if fourth_word_result[i] == 1:
             add_possible_letter_to_all_but_one_slot(fourth_word[i], fourth_word_result[i])
         if fourth_word_result[i] == 2:
