@@ -17,13 +17,13 @@ fourth_word_result = []
 fourth_word_result = input("Please enter your fourth tried word result separated by commas:").upper()'''
 
 first_word = 'crate'
-first_word_result = [0, 0, 2, 0, 0]
+first_word_result = [0, 0, 0, 0, 2]
 second_word = 'flunk'
-second_word_result = [0, 2, 0, 2, 0]
-third_word = 'plans'
-third_word_result = [0, 2, 2, 2, 0]
-fourth_word = 'clans'
-fourth_word_result = [0, 2, 2, 2, 0]
+second_word_result = [0, 0, 0, 1, 0]
+third_word = 'whips'
+third_word_result = [0, 1, 1, 0, 0]
+fourth_word = 'boing'
+fourth_word_result = [0, 0, 1, 1, 1]
 
 first_word = first_word.upper()
 second_word = second_word.upper()
@@ -44,7 +44,6 @@ fifth_slot_definitive_letter = ''
 
 def remove_incorrect_letters():
     for i in range(len(first_word_result)):
-        print(first_word_result[i], first_word[i])
         if first_word_result[i] == 0:
             if first_word[i] in abecedary:
                 abecedary.remove(first_word[i])
@@ -86,6 +85,7 @@ def remove_incorrect_letters():
 
 
 def add_possible_letter_to_all_but_one_slot(letter, incorrect_slot):
+    print(letter, incorrect_slot)
     if incorrect_slot == 1:
         if letter not in second_slot_possible_letters:
             second_slot_possible_letters.append(letter)
@@ -143,11 +143,12 @@ def add_definitive_letter(letter, correct_slot):
 
 def create_possible_words():
     possible_words = []
-    for i in first_slot_possible_letters:
-        for j in second_slot_possible_letters:
-            for k in third_slot_possible_letters:
-                for l in fourth_slot_possible_letters:
-                    possible_words.append(i + j + k + l)
+    for letter in first_slot_possible_letters:
+        for letter2 in second_slot_possible_letters:
+            for letter3 in third_slot_possible_letters:
+                for letter4 in fourth_slot_possible_letters:
+                    for letter5 in fifth_slot_possible_letters:
+                        possible_words.append(letter + letter2 + letter3 + letter4 + letter5)
     return possible_words
 
 
@@ -157,6 +158,5 @@ print("second slot possible letters: ", second_slot_possible_letters)
 print("third slot possible letters: ", third_slot_possible_letters)
 print("fourth slot possible letters: ", fourth_slot_possible_letters)
 print("fifth slot possible letters: ", fifth_slot_possible_letters)
-print("first slot definitive letter: ", first_slot_definitive_letter)
 print("correct letters: ", correct_letters)
 print(create_possible_words())
