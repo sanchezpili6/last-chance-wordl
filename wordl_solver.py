@@ -1,21 +1,6 @@
 abecedary = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
              'V', 'W', 'X', 'Y', 'Z']
 
-'''print("Welcome to the word solver!")
-print("Remember: gray = 0, yellow = 1, green = 2")
-first_word = input("Please enter your first tried word:").upper()
-first_word_result = []
-first_word_result = input("Please enter your first tried word result separated by commas:")
-second_word = input("Please enter your second tried word:").upper()
-second_word_result = []
-second_word_result = input("Please enter your second tried word result separated by commas:")
-third_word = input("Please enter your third tried word:").upper()
-third_word_result = []
-third_word_result = input("Please enter your third tried word result separated by commas:")
-fourth_word = input("Please enter your fourth tried word:").upper()
-fourth_word_result = []
-fourth_word_result = input("Please enter your fourth tried word result separated by commas:").upper()'''
-
 first_word = 'crate'
 first_word_result = [0, 0, 0, 0, 2]
 second_word = 'flunk'
@@ -42,6 +27,15 @@ fifth_slot_possible_letters = []
 fifth_slot_definitive_letter = ''
 
 
+def populate_possible_letters():
+    for letter in abecedary:
+        first_slot_possible_letters.append(letter)
+        second_slot_possible_letters.append(letter)
+        third_slot_possible_letters.append(letter)
+        fourth_slot_possible_letters.append(letter)
+        fifth_slot_possible_letters.append(letter)
+
+
 def remove_incorrect_letters():
     for i in range(len(first_word_result)):
         if first_word_result[i] == 0:
@@ -50,7 +44,7 @@ def remove_incorrect_letters():
         if first_word_result[i] == 1:
             add_possible_letter_to_all_but_one_slot(first_word[i], first_word_result[i])
         if first_word_result[i] == 2:
-            print(add_definitive_letter(first_word[i], i))
+            add_definitive_letter(first_word[i], i)
     print('---------')
     for i in range(len(second_word_result)):
         print(second_word_result[i], second_word[i])
@@ -60,7 +54,7 @@ def remove_incorrect_letters():
         if second_word_result[i] == 1:
             add_possible_letter_to_all_but_one_slot(second_word[i], second_word_result[i])
         if second_word_result[i] == 2:
-            print(add_definitive_letter(second_word[i], i))
+            add_definitive_letter(second_word[i], i)
     print('---------')
     for i in range(len(third_word_result)):
         print(third_word_result[i], third_word[i])
@@ -70,7 +64,7 @@ def remove_incorrect_letters():
         if third_word_result[i] == 1:
             add_possible_letter_to_all_but_one_slot(third_word[i], third_word_result[i])
         if third_word_result[i] == 2:
-            print(add_definitive_letter(third_word[i], i))
+            add_definitive_letter(third_word[i], i)
     print('---------')
     for i in range(len(fourth_word_result)):
         print(fourth_word_result[i], fourth_word[i])
@@ -80,12 +74,11 @@ def remove_incorrect_letters():
         if fourth_word_result[i] == 1:
             add_possible_letter_to_all_but_one_slot(fourth_word[i], fourth_word_result[i])
         if fourth_word_result[i] == 2:
-            print(add_definitive_letter(fourth_word[i], i))
+            add_definitive_letter(fourth_word[i], i)
     return abecedary
 
 
 def add_possible_letter_to_all_but_one_slot(letter, incorrect_slot):
-    print(letter, incorrect_slot)
     if incorrect_slot == 1:
         if letter not in second_slot_possible_letters:
             second_slot_possible_letters.append(letter)
